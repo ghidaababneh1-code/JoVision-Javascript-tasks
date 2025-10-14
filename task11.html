@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 11 - Get IP with Error Handling</title>
+</head>
+<body>
+  <h3>Task 11 — Get IP & Handle Errors</h3>
+  <button id="getIpBtn">Get ip</button>
+
+  <script>
+    const btn = document.getElementById('getIpBtn');
+
+    btn.addEventListener('click', async () => {
+      try {
+        
+        btn.textContent = "Fetching...";
+
+       
+        const response = await fetch('https://api.ipify.org?format=json'); 
+  
+        // const response = await fetch('https://api.ipify.orgx?format=json');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+       
+        btn.textContent = data.ip;
+
+      } catch (error) {
+        
+        alert("An error occurred: " + error.message);
+        console.error("Error fetching IP:", error);
+
+        
+        btn.textContent = "Get ip";
+      }
+    });
+  </script>
+</body>
+</html>
