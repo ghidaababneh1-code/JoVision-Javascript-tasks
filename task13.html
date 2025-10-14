@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 13 - Name Age Prediction</title>
+</head>
+<body>
+  <h3>Task 13 — Predict Age from Name</h3>
+
+  <label for="nameInput">Name:</label>
+  <input type="text" id="nameInput" placeholder="Name">
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const btn = document.getElementById('submitBtn');
+
+    btn.addEventListener('click', async () => {
+      
+      const name = document.getElementById('nameInput').value.trim();
+
+      if (!name) {
+        alert("Please enter a name.");
+        return;
+      }
+
+      try {
+      
+        const response = await fetch(`https://api.agify.io?name=${encodeURIComponent(name)}`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+  
+        const { name: responseName, age } = data;
+
+     
+        alert(`Your name is: ${responseName}\nYour age is: ${age}`);
+
+      } catch (error) {
+        console.error("Error fetching age:", error);
+        alert("An error occurred: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
