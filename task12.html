@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 12 - Object from Form</title>
+</head>
+<body>
+  <h3>Task 12 — Enter your Name and Age</h3>
+
+  <label for="nameInput">Name:</label>
+  <input type="text" id="nameInput" placeholder="Name"><br><br>
+
+  <label for="ageInput">Age:</label>
+  <input type="text" id="ageInput" placeholder="Age"><br><br>
+
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const btn = document.getElementById('submitBtn');
+
+    btn.addEventListener('click', () => {
+     
+      const name = document.getElementById('nameInput').value;
+      const age = document.getElementById('ageInput').value;
+      const timestamp = new Date().toLocaleString(); // الوقت الحالي
+
+      const user = {
+        name: name,
+        age: age,
+        timestamp: timestamp
+      };
+
+      const { name: userName, age: userAge, timestamp: userTime } = user;
+
+     
+      alert(`Your name is: ${userName}\nYour age is: ${userAge}\nTimestamp: ${userTime}`);
+    });
+  </script>
+</body>
+</html>
