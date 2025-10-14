@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5 - Sum of Even Numbers</title>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+
+    <script>
+     
+        const button = document.getElementById('myButton');
+
+
+        button.addEventListener('click', function() {
+
+        
+            let numbers = [];
+            for (let i = 0; i <= 100; i++) {
+                numbers.push(i);
+            }
+
+         
+            let sum = 0;
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) { // إذا الرقم زوجي
+                    sum += numbers[i];
+                }
+            }
+
+           
+            console.log("Sum of even numbers from 0 to 100 is:", sum);
+        });
+    </script>
+</body>
+</html>
